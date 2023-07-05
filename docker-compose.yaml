@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  alertbot:
+    container_name: alertbot-${CHAIN_ID}
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - '8000:8000'
+    environment:
+      - VALIDATOR_ADDR=${VALIDATOR_ADDR}
+      - RPC=${RPC}
+      - WEBHOOK=${WEBHOOK}
+    
